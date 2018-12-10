@@ -24,16 +24,12 @@ document.onkeyup = function(event) {
     // Variable: store pressed key
     var userGuess = event.key;  
 
-    // Conditional: compare correct guesses to goal word to check if won
+    // Conditional: Stop game if won
     if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
         console.log("You Win!");
-
-        // Add 1 to win
-        wins = 1;
-        document.getElementById("wins").textContent = wins;
     }
     
-    // Conditional: Users Loses if no more guesses
+    // Conditional: Stop game if no more guesses remain
     else if (guessesRemaining === 0){
         document.getElementById("game-over").textContent = ("Game Over!");
     }
@@ -47,7 +43,7 @@ document.onkeyup = function(event) {
         if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
 
         // Add 1 to win
-        wins = 1;
+        wins++;
         document.getElementById("wins").textContent = wins;
         }
     }
@@ -60,7 +56,7 @@ document.onkeyup = function(event) {
         if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
 
         // Add 1 to win
-        wins = 1;
+        wins++;
         document.getElementById("wins").textContent = wins;
         }
     }
@@ -72,7 +68,7 @@ document.onkeyup = function(event) {
         if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
 
         // Add 1 to win
-        wins = 1;
+        wins++;
         document.getElementById("wins").textContent = wins;
         }
     }
