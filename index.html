@@ -6,32 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
 
-    <!-- Link Javascript -->
-    <script src = "assets/javascript/game.js"></script>
+    
     
 
 </head>
 <body>
     <div>
         <p> Open the console to see the magic</p>
-        <p id = "question"> WHAT WORD AM I THINKING OF? </p>
+        <p> WHAT WORD AM I THINKING OF?</p>
         <p> PRESS ANY KEY TO GET STARTED! </p>
         <p> WINS </p>
+        <p id = "wins"></p>
+        <p> CURRENT WORD </p>
         <P></P>
-        <P> CURRENT WORD </P>
-        <P></P>
-        <P> NUMBER OF GUESSES REMAINING</P>
-        <P id = "correctlyGuessedLetters"></P>
-        <P>LETTERS ALREADY GUESSED</P>
-        <P></P>
+        <p> NUMBER OF GUESSES REMAINING</p>
+        <p id = "guesses-remaining"></p>
+        <p id = "correct-guess"></p>
+        <p>LETTERS ALREADY GUESSED</p>
+        <p id = "wrong-guess"></p>
+        <p id = game-over></p>
 
     </div>
 
 
 
     <p id="userchoice-text"></p>
-    
+
+    <!-- Link Javascript -->
+    <script src = "assets/javascript/game.js"></script>  
+
 </body>
+
+
 
 
 

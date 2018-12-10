@@ -1,132 +1,91 @@
-// STEP ONE: Create three Arrays: corretLetters, correctlyGuessedLetters and incorrectlyGuessedLetters
-// STEP TWO: Push User's guess to appropriate array
-// STEP THREE: Create two Arrays sortedCorrectWord and sortedCorrectlyGuessedLetters to hold the Sorted contents of their complementary arrays (e.g. sortedCorrectWord = correctWord.sort())
-// STEP FOUR: Compare Sorted Arrays
-
-// var targetDiv = document.getElementById("question");
-// targetDiv.textContent = "WHAT WORD AM I THINKING OF?"; 
-
-// Create Array for correctLetters 
+// Array: goal
 var correctLetters = ["c ","a ","t"];
 
-for (i=0; i<correctLetters.length; i++){
-    console.log(correctLetters[i]);
-}
+// Array: correct guesses
+var correctlyGuessedLetters = ["_ ", "_ ", "_"];
+document.getElementById("correct-guess").textContent = correctlyGuessedLetters;
 
-// Create Array to hold correctlyGuessedLetters
-var correctlyGuessedLetters = ["_ ","_ ","_"];
-
+// Array: incorrect guesses
 var incorrectlyGuessedLetters = [];
 
+// Variable: remaining guesses
 var guessesRemaining = correctLetters.length * 2;
-console.log("You have " + guessesRemaining + " guesses remaining.")
+document.getElementById("guesses-remaining").textContent = guessesRemaining;
 
+// Variable: wins
 var wins = 0;
 
-for (i=0; i<correctlyGuessedLetters.length; i++){
-    console.log(correctlyGuessedLetters[i]);
-}
+// Event: when key is pressed
 document.onkeyup = function(event) {
 
-    var userGuess = event.key;
+    // Conditional: key pressed must be in alphabet
+    if (event.keyCode >= 65 && event.keyCode <= 90){
 
+    // Variable: store pressed key
+    var userGuess = event.key;  
+
+    // Conditional: compare correct guesses to goal word to check if won
     if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
         console.log("You Win!");
 
-        wins += 1;
-        console.log("You have won " + wins + " times.");
+        // Add 1 to win
+        wins = 1;
+        document.getElementById("wins").textContent = wins;
     }
     
-    if (guessesRemaining === 0){
-        console.log("You Lose!");
+    // Conditional: Users Loses if no more guesses
+    else if (guessesRemaining === 0){
+        document.getElementById("game-over").textContent = ("Game Over!");
     }
 
+    // Conditionals: 1) check for correct letter, 2) replace placeholder with correct letter, 3) check if won
     else if (userGuess ==="c"){
         correctlyGuessedLetters[0] = "c ";
-        console.log(correctlyGuessedLetters);
+        document.getElementById("correct-guess").textContent = correctlyGuessedLetters;
+        
+        // Conditional: compare correct guesses to goal word to check if won
         if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
-            console.log("You Win");
 
-            wins += 1;
-            console.log("You have won " + wins + " times.");
+        // Add 1 to win
+        wins = 1;
+        document.getElementById("wins").textContent = wins;
         }
     }
 
     else if (userGuess ==="a"){
         correctlyGuessedLetters[1] = "a ";
-        console.log(correctlyGuessedLetters);
-        if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
-            console.log("You Win");
+        document.getElementById("correct-guess").textContent = correctlyGuessedLetters;
 
-            wins += 1;
-            console.log("You have won " + wins + " times.");
+        // Conditional: compare correct guesses to goal word to check if won
+        if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
+
+        // Add 1 to win
+        wins = 1;
+        document.getElementById("wins").textContent = wins;
         }
     }
 
     else if (userGuess ==="t"){
         correctlyGuessedLetters[2] = "t";
-        console.log(correctlyGuessedLetters);
+        document.getElementById("correct-guess").textContent = correctlyGuessedLetters;
+        // Conditional: compare correct guesses to goal word to check if won
         if (JSON.stringify(correctLetters) == JSON.stringify(correctlyGuessedLetters)){
-            console.log("You Win");
 
-            wins += 1;
-            console.log("You have won " + wins + " times.");
+        // Add 1 to win
+        wins = 1;
+        document.getElementById("wins").textContent = wins;
         }
     }
 
     else{
         incorrectlyGuessedLetters.push(userGuess);
-        console.log(incorrectlyGuessedLetters);
 
         guessesRemaining = guessesRemaining - 1;
-        console.log("You have " + guessesRemaining + " guesses remaining.");
+        document.getElementById("guesses-remaining").textContent = guessesRemaining;
+
+        document.getElementById("wrong-guess").textContent = incorrectlyGuessedLetters;
     }
 }
-
-
-// // Create array that will hold the letters the user guesses INCORRECTLY
-// var incorrectlyGuessedLetters = [];
-
-// // Create array that will hold the letters the user gusses CORRECTLY
-
-// // var sortedCorrectlyGuessedLetters = correctlyGuessedLetters.sort();
-
-// // // Create variables that hold references to the places in the HTML where we want to display things.
-// // var fillingCorrectGuess = document.getElementById("filling-correct-guess-text");
-// // fillingCorrectGuesst.textContent = "wins: ";
-
-// // Comparison Test
-// if (JSON.stringify(correctLetters) != JSON.stringify(correctlyGuessedLetters)){
-//     console.log("You Win");
-// }
-
-// // This function is run whenever the user presses a key.
-// document.onkeyup = function(event) {
-
-//     // Determines which key was pressed.
-//     var userGuess = event.key;
-
-    
-
-//     // Check if user's guess is correct or incorrect
-//     if ((userGuess == "c") || (userGuess == "a" || (userGuess == "t"))){
-
-//         // Push corret letters to correctlyGuessedLetters array
-//         correctlyGuessedLetters.push(userGuess);
-//         console.log("You currently guessed: " + userGuess);
-//         console.log("You have guessed the following letters correctly: " + correctlyGuessedLetters)
-
-//         // Sort correctlyGuessedLetters
-//         sortedCorrectlyGuessedLetters = correctlyGuessedLetters.sort();
-//         console.log("sorted correctly guessed letters: " + sortedCorrectlyGuessedLetters);
-//     }
-//     else 
-
-//         // Push incorrect letters to incorrectlyGuessedLetters array
-//         incorrectlyGuessedLetters.push(userGuess);
-//         console.log("You currently guessed: " + userGuess);
-//         console.log("You have guessed the following letters incorrectly: " + incorrectlyGuessedLetters)
-    
-// }
+}
 
 
