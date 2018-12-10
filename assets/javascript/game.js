@@ -27,8 +27,8 @@ document.onkeyup = function(event) {
     // Conditional: key pressed must be in alphabet
     if (event.keyCode >= 65 && event.keyCode <= 90){
 
-        // Variable: store pressed key
-        var userGuess = event.key;  
+        // Variable: store pressed key. Convert to lower case
+        var userGuess = event.key.toLowerCase();  
 
     
         // Conditional: Stop game if won
@@ -38,7 +38,7 @@ document.onkeyup = function(event) {
     
         // Conditional: Stop game if no more guesses remain
         else if (guessesRemaining === 0){
-            document.getElementById("game-over").textContent = ("Game Over! You ran out of guesses!");
+            document.getElementById("game-over").textContent = "GAME OVER MAN! GAME OVER!";
         }
 
         // Conditionals: 1) check for correct letter, 2) replace placeholder with correct letter, 3) check if won
@@ -52,6 +52,7 @@ document.onkeyup = function(event) {
                 // Add 1 to win
                 wins++;
                 document.getElementById("wins").textContent = wins;
+                document.getElementById("winner").textContent = "CONGRATULATIONS! YOU WON!";
             }
         }
 
@@ -65,6 +66,7 @@ document.onkeyup = function(event) {
                 // Add 1 to win
                 wins++;
                 document.getElementById("wins").textContent = wins;
+                document.getElementById("winner").textContent = "CONGRATULATIONS! YOU WON!";
             }
         }
 
@@ -78,6 +80,7 @@ document.onkeyup = function(event) {
                 // Add 1 to win
                 wins++;
                 document.getElementById("wins").textContent = wins;
+                document.getElementById("winner").textContent = "CONGRATULATIONS! YOU WON!";
             }
         }
 
@@ -89,10 +92,10 @@ document.onkeyup = function(event) {
             }
 
             else{
-                // Push incorrect guess to array
+                // Push incorrect guess to incorrect guesses array
                 incorrectlyGuessedLetters.push(userGuess);
 
-                // Subtract 1 guess
+                // Subtract 1 from remaining guesses
                 guessesRemaining = guessesRemaining - 1;
                 document.getElementById("guesses-remaining").textContent = guessesRemaining;
         
